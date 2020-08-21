@@ -1,0 +1,19 @@
+﻿@model Report
+@{ Layout = "_Layout"; ViewBag.Title = "Get Country data";}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+@if (Model != null)
+{
+<div class="container">
+    <h1><span class="label label-default">COVID 19 Tracker</span></h1>
+    <br />
+</div>
+    <div class="container">
+        <h3>
+            <span class="label label-info">Total Active Cases: @Model.ActiveCases</span>
+            <span class="label label-warning">Total Confirmed Cases: @Model.ConfirmedCases</span>
+            <span class="label label-danger">Total Death: @Model.DeathCases</span>
+        </h3>
+    </div>
+}
