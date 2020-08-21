@@ -7,7 +7,7 @@ namespace ShwetaApp.Model
 {
     public class FullData
     {
-        public Report CountryData { get; set; }
-        public StateDataModel StateReport { get; set; }
+        public string source { get; set; }
+        public List<StateDataModel> state_data { get; set; }
     }
 }

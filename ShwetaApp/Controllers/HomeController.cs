@@ -34,6 +34,23 @@ namespace ShwetaApp.Controllers
             return View(report[1]) ;
         }
 
+        public async Task<IActionResult> State()
+        {
+            List<FullData> report = new List<FullData>();
+            using (var httpClient = new HttpClient())
+            {
+                using (var response = await httpClient.GetAsync("https://covid-19india-api.herokuapp.com/v2.0/state_data"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    apiResponse = apiResponse.Replace("Now, you don't have to mention version number. Visit Homepage for more API endpoints", "");
+                    report = JsonConvert.DeserializeObject<List<FullData>>(apiResponse, new JsonSerializerSettings
+                    {
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+                }
+            }
+            return View(report[1].state_data);
+        }
 
         // GET: HomeController/Details/5
         public ActionResult Details(int id)
